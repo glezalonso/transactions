@@ -12,10 +12,11 @@ app.set('title', 'transaction')
 app.set('port', process.env.PORT || 3000)
 
 const connection = require('./database/connection')
-const {addTransaction, getTransactions} = require('./controllers/transaction.controller')
+const {addTransaction, getTransactions, removeTransaction} = require('./controllers/transaction.controller')
 
 app.get('/',getTransactions)
 app.post('/', addTransaction)
+app.delete('/:id', removeTransaction)
 
 connection()
     .then(() => {

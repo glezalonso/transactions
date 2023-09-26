@@ -21,7 +21,15 @@ const addTransaction = (req, res) => {
     .catch(error => res.status(500).json({error}))
 }
 
+const removeTransaction = (req, res) => {
+    const { id } = req.params
+    transactionModel.findOneAndDelete({_id:id})
+    .then(data => res.status(200).json(data))
+    .catch(error => res.status(500).json({error}))
+}
+
 module.exports = {
     addTransaction,
-    getTransactions
+    getTransactions,
+    removeTransaction
 }
