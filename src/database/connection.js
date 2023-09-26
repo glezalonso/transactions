@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const connection = async () => {
     const db = await mongoose
         .connect(
-            `mongodb://mongo:jRJj7akmIa7wvKT6EEaK@containers-us-west-90.railway.app:7266`
+           process.env.DATABASE_URL
         )
         .then((res) =>
             console.log(
